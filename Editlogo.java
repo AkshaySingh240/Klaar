@@ -8,12 +8,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class Editlogo {
 
 	public static void main(String[] args) {
-		System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
+		System.setProperty("webdriver.chrome.driver",  "/path/to/chromedriver");
 		String baseURL = "https://dev.klaarhq.com";
         WebDriver driver = new ChromeDriver();
         
-        
-        
+	    WebElement login = driver.findElement(By.xpath("//div[@data-cy='login-with-klaar-button']")).login-with-klaar-button.click(); 
         WebElement usernameInput = driver.findElement(By.xpath("//input[@id='email-field']")).sendKeys("deepa.nayak@gamma.klaar.team");
         WebElement passwordInput = driver.findElement(By.xpath("//input[@id='password-field']")).sendKeys("Klaar2021"); 
         WebElement loginButton = driver.findElement(By.xpath("//button[@id='login-btn']")).login-btn.click();
