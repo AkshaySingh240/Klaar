@@ -4,6 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+
+import field.Select;
 
 public class Editlogo {
 
@@ -21,6 +25,20 @@ public class Editlogo {
         driver.findElement(By.xpath("//button[@data-cy='settings-nav-menu-button']"))
         driver.findElement(By.xpath("//a[@href='/settings/workspace/details']")).click(); 
         
+        
+        String expectedTitle = "Workspace";
+        String actualTitle = driver.getTitle();
+        if (actualTitle.equals(expectedTitle)) {
+            System.out.println("Page title is correct: " + expectedTitle);
+        } else {
+            System.out.println("Page title is incorrect. Expected: " + expectedTitle + ", Actual: " + actualTitle);
+        }
+        
+     // Perform functionality testing (e.g., click buttons, fill forms, etc.)
+        Select dropdown = new Select(driver.findElement(By.xpath("//nz-select[@data-cy='settings-select-organization-head-dropdown-area']")));
+        dropdown.selectByVisibleText("Akshay");
+        
+
         WebElement chooseFilesButton = driver.findElement(By.xpath("//div[@class='ant-upload ant-upload-btn']")); 
         chooseFilesButton.sendKeys("C:\\Users\\hp\\Desktop\\Solar.png");        
         
@@ -30,6 +48,13 @@ public class Editlogo {
         WebElement editButton = driver.findElement(By.xpath("//button[@data-cy='settings-workspace-logo-edit-button']"));
         editButton.click();
         editButton.sendKeys("C:\\Users\\hp\\Desktop\\Solar.png");
+        
+        WebElement newLogo = driver.findElement(By.xpath("//img[@alt='Workspace Logo']"));
+        if(newLogo.isDisplayed()) {
+            System.out.println("Logo updated successfully.");
+        } else {
+            System.out.println("Failed to update logo.");
+        }
                 
         
         WebElement deleteButton = driver.findElement(By.xpath("//button[@data-cy='settings-workspace-logo-delete-button']"));
