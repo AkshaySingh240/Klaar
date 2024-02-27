@@ -5,6 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import field.Select;
 
 public class hello {
 
@@ -35,10 +38,22 @@ public class hello {
 	        WebElement emailField = driver.findElement(By.xpath("//input[@data-cy='settings-add-user-email-text-field']"));
 	        emailField.sendKeys("mary@xyz.com");
 	        
-	        WebElement departmentfield = driver.findElement(By.xpath("//input[@data-cy='settings-add-user-email-text-field']"));
-	        departmentfield.sendKeys("HR");
+	        Select dropdown = new Select(driver.findElement(By.xpath("//nz-select[@data-cy='settings-add-user-select-department-dropdown-area']")));
+	        dropdown.selectByVisibleText("Operation");
+
 	        
+	        Select dropdown = new Select(driver.findElement(By.xpath("//nz-select[@data-cy='settings-add-user-select-title-dropdown-area']")));
+	        dropdown.selectByVisibleText("QA");
 	        
+	        Select dropdown = new Select(driver.findElement(By.xpath("//nz-select[@data-cy='settings-add-user-select-manager-dropdown-area']")));
+	        dropdown.selectByVisibleText("Akshay");
+	        
+	        Select dropdown = new Select(driver.findElement(By.xpath("//nz-select[@data-cy='settings-add-user-select-hrbp-dropdown-area']")));
+	        dropdown.selectByVisibleText("Akshay");	        
+	        
+	        WebElement userID = driver.findElement(By.xpath("//input[@data-cy='settings-add-user-id-text-field']"));
+	        emailField.sendKeys("5");
+	       
 	        
 	        WebElement addbutton = driver.findElement(By.xpath("//button[@data-cy='modal-submit-button']"));
 	        saveButton.click();
